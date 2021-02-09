@@ -1,0 +1,132 @@
+<!doctype html>
+
+<html>
+	<head>
+		<script src="jszip.min.js"></script>
+		<script src="submitter.js"></script>
+
+		<style>
+			h1 {
+				text-align: center;
+				font-size: 2em;
+			}
+			
+			fieldset {
+				border: 0;
+				width: 40em;
+				margin: 0 auto;
+			}
+			
+			input[type=number] {
+				width: 5em;
+			}
+			
+			input[type=submit] {
+				display: block;
+				margin: 0 auto;
+			}
+			
+			label {
+				display: inline-block;
+				min-width: 15em;
+				text-align: right;
+				font-weight: bold;
+			}
+			
+			#error-message {
+				text-align: center;
+				font-weight: bold;
+				color: red;
+			}
+		
+			#template {
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>
+			Computer Science IA Submission Form
+		</h1>
+		<form action="javascript:submitSolution()">
+			<fieldset>
+				<label for="name">Candidate name:</label>
+				<input type="text" id="candidate-name" />
+			</fieldset>
+			
+			<fieldset>
+				<label for="name">School number:</label>
+				<input type="text" id="school-number" />
+			</fieldset>
+			
+			<fieldset>
+				<label for="name">Candidate session number:</label>
+				<input type="text" id="session-number" />
+			</fieldset>
+			
+			<fieldset>
+				<label for="name">Solution title:</label>
+				<input type="text" id="solution-title" />
+			</fieldset>
+			
+			<fieldset>
+				<label for="name">User name:</label>
+				<input type="text" id="user-name" />
+			</fieldset>
+			
+			<fieldset>
+				<label for="name">Word count:</label>
+				<input type="number" id="word-count" />
+			</fieldset>
+			
+			<fieldset>
+				<label for="name">Planning (A):</label>
+				<input type="file" id="file1" />
+			</fieldset>
+			
+			<fieldset>
+				<label for="name">Record of tasks (B):</label>
+				<input type="file" id="file2" />
+			</fieldset>
+			
+			<fieldset>
+				<label for="name">Design document (B):</label>
+				<input type="file" id="file3" />
+			</fieldset>
+			
+			<fieldset>
+				<label for="name">Development (C):</label>
+				<input type="file" id="file4" />
+			</fieldset>
+			
+			<fieldset>
+				<label for="name">Video of functionality (D):</label>
+				<input type="file" id="file5" />
+			</fieldset>
+			
+			<fieldset>
+				<label for="name">Evaluation (E):</label>
+				<input type="file" id="file6" />
+			</fieldset>
+			
+			<fieldset>
+				<label for="name">Appendix:</label>
+				<input type="file" id="file7" />
+			</fieldset>
+
+			<fieldset>
+				<label for="name">Product ZIP file:</label>
+				<input type="file" id="file8" />
+			</fieldset>
+
+			<fieldset>
+				<input type="submit" id="submit-button" value="Submit" />
+			</fieldset>
+			
+			<div id="template">${TEMPLATE}</div>
+		</form>
+		
+		<div id="error-message">
+		</div>		
+	</body>
+</html>
