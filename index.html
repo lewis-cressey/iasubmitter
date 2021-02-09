@@ -1,0 +1,132 @@
+<!doctype html>
+
+<html>
+	<head>
+		<script src="jszip.min.js"></script>
+		<script src="submitter.js"></script>
+
+		<style>
+			h1 {
+				text-align: center;
+				font-size: 2em;
+			}
+			
+			fieldset {
+				border: 0;
+				width: 40em;
+				margin: 0 auto;
+			}
+			
+			input[type=number] {
+				width: 5em;
+			}
+			
+			input[type=submit] {
+				display: block;
+				margin: 0 auto;
+			}
+			
+			label {
+				display: inline-block;
+				min-width: 15em;
+				text-align: right;
+				font-weight: bold;
+			}
+			
+			#error-message {
+				text-align: center;
+				font-weight: bold;
+				color: red;
+			}
+		
+			#template {
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>
+			Computer Science IA Submission Form
+		</h1>
+		<form action="javascript:submitSolution()">
+			<fieldset>
+				<label for="name">Candidate name:</label>
+				<input type="text" id="candidate-name" />
+			</fieldset>
+			
+			<fieldset>
+				<label for="name">School number:</label>
+				<input type="text" id="school-number" />
+			</fieldset>
+			
+			<fieldset>
+				<label for="name">Candidate session number:</label>
+				<input type="text" id="session-number" />
+			</fieldset>
+			
+			<fieldset>
+				<label for="name">Solution title:</label>
+				<input type="text" id="solution-title" />
+			</fieldset>
+			
+			<fieldset>
+				<label for="name">User name:</label>
+				<input type="text" id="user-name" />
+			</fieldset>
+			
+			<fieldset>
+				<label for="name">Word count:</label>
+				<input type="number" id="word-count" />
+			</fieldset>
+			
+			<fieldset>
+				<label for="name">Planning (A):</label>
+				<input type="file" id="file1" />
+			</fieldset>
+			
+			<fieldset>
+				<label for="name">Record of tasks (B):</label>
+				<input type="file" id="file2" />
+			</fieldset>
+			
+			<fieldset>
+				<label for="name">Design document (B):</label>
+				<input type="file" id="file3" />
+			</fieldset>
+			
+			<fieldset>
+				<label for="name">Development (C):</label>
+				<input type="file" id="file4" />
+			</fieldset>
+			
+			<fieldset>
+				<label for="name">Video of functionality (D):</label>
+				<input type="file" id="file5" />
+			</fieldset>
+			
+			<fieldset>
+				<label for="name">Evaluation (E):</label>
+				<input type="file" id="file6" />
+			</fieldset>
+			
+			<fieldset>
+				<label for="name">Appendix:</label>
+				<input type="file" id="file7" />
+			</fieldset>
+
+			<fieldset>
+				<label for="name">Product ZIP file:</label>
+				<input type="file" id="file8" />
+			</fieldset>
+
+			<fieldset>
+				<input type="submit" id="submit-button" value="Submit" />
+			</fieldset>
+			
+			<div id="template">PCFkb2N0eXBlIGh0bWw+DQoNCjxodG1sPg0KCTxoZWFkPg0KCQk8bWV0YSBjaGFyc2V0PSJ1dGY4Ij4NCgkJPHRpdGxlPkNvbXB1dGVyIFNjaWVuY2Ugc29sdXRpb248L3RpdGxlPg0KCQkNCgkJPHN0eWxlPg0KCQkJYm9keSB7DQoJCQkJZGlzcGxheTogZmxleDsNCgkJCQlmbGV4LWRpcmVjdGlvbjogY29sdW1uOw0KCQkJCWp1c3RpZnktY29udGVudDogY2VudGVyOw0KCQkJCWFsaWduLWl0ZW1zOiBjZW50ZXI7CQkJCQ0KCQkJCW1pbi1oZWlnaHQ6IDk1dmg7CQkJCQ0KCQkJfQ0KCQkJDQoJCQloMSB7DQoJCQkJdGV4dC1hbGlnbjogY2VudGVyOw0KCQkJfQ0KCQkJDQoJCQkjY29udGVudCB7DQoJCQkJZGlzcGxheTogZmxleDsNCgkJCQlmbGV4LWRpcmVjdGlvbjogcm93Ow0KCQkJCWZsZXgtd3JhcDogd3JhcDsNCgkJCQlqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjsNCgkJCQlhbGlnbi1pdGVtczogY2VudGVyOwkJCQkNCgkJCX0NCgkJDQoJCQl0YWJsZSB7DQoJCQkJYm9yZGVyLWNvbGxhcHNlOiBjb2xsYXBzZTsNCgkJCQltYXJnaW46IDAgMWVtIDAgMDsNCgkJCX0NCgkJDQoJCQl0aCB7DQoJCQkJdGV4dC1hbGlnbjogcmlnaHQ7IA0KCQkJCXBhZGRpbmc6IDFlbTsNCgkJCX0NCgkJCQ0KCQkJdGQgew0KCQkJCXBhZGRpbmc6IDFlbTsNCgkJCX0NCg0KCQkJdWwgew0KCQkJCWJvcmRlci1sZWZ0OiAycHggc29saWQgYmxhY2s7DQoJCQl9DQoJCQkNCgkJCWxpIHsNCgkJCQlsaXN0LXN0eWxlLXR5cGU6IG5vbmU7DQoJCQkJcGFkZGluZzogMC41ZW07DQoJCQl9DQoJCTwvc3R5bGU+DQoJPC9oZWFkPg0KCTxib2R5Pg0KCQk8aDE+Q29tcHV0ZXIgc2NpZW5jZSBzb2x1dGlvbjwvaDE+DQoNCgkJPGRpdiBpZD0iY29udGVudCI+DQoJCQk8dGFibGU+DQoJCQkJPHRib2R5Pg0KCQkJCQk8dHI+DQoJCQkJCQk8dGg+Q2FuZGlkYXRlIG5hbWU6PC90aD4NCgkJCQkJCTx0ZD4ke2NhbmRpZGF0ZS1uYW1lfTwvdGQ+DQoJCQkJCTwvdHI+DQoJCQkJCTx0cj4NCgkJCQkJCTx0aD5TY2hvb2wgbnVtYmVyOjwvdGg+DQoJCQkJCQk8dGQ+JHtzY2hvb2wtbnVtYmVyfTwvdGQ+DQoJCQkJCTwvdHI+DQoNCgkJCQkJPHRyPg0KCQkJCQkJPHRoPkNhbmRpZGF0ZSBzZXNzaW9uIG51bWJlcjo8L3RoPg0KCQkJCQkJPHRkPiR7c2Vzc2lvbi1udW1iZXJ9PC90ZD4NCgkJCQkJPC90cj4NCgkJCQkJDQoJCQkJCTx0cj4NCgkJCQkJCTx0aD5Tb2x1dGlvbiB0aXRsZTo8L3RoPg0KCQkJCQkJPHRkPiR7c29sdXRpb24tdGl0bGV9PC90ZD4NCgkJCQkJPC90cj4NCgkJCQkJDQoJCQkJCTx0cj4NCgkJCQkJCTx0aD5Vc2VyIG5hbWU6PC90aD4NCgkJCQkJCTx0ZD4ke3VzZXItbmFtZX08L3RkPg0KCQkJCQk8L3RyPg0KDQoJCQkJCTx0cj4NCgkJCQkJCTx0aD5Xb3JkIGNvdW50OjwvdGg+DQoJCQkJCQk8dGQ+JHt3b3JkLWNvdW50fTwvdGQ+DQoJCQkJCTwvdHI+DQoJCQkJPC90Ym9keT4NCgkJCTwvdGFibGU+DQoNCgkJCTx1bD4NCgkJCQk8bGk+PGEgaHJlZj0iZG9jdW1lbnRhdGlvbi9jcml0ZXJpb24tYS1wbGFubmluZy5wZGYiPlBsYW5uaW5nPC9hPjwvbGk+DQoJCQkJPGxpPjxhIGhyZWY9ImRvY3VtZW50YXRpb24vY3JpdGVyaW9uLWItcm90LnBkZiI+UmVjb3JkIG9mIHRhc2tzPC9hPjwvbGk+DQoJCQkJPGxpPjxhIGhyZWY9ImRvY3VtZW50YXRpb24vY3JpdGVyaW9uLWItZGVzaWduLnBkZiI+RGVzaWduPC9hPjwvbGk+DQoJCQkJPGxpPjxhIGhyZWY9ImRvY3VtZW50YXRpb24vY3JpdGVyaW9uLWMtZGV2ZWxvcG1lbnQucGRmIj5EZXZlbG9wbWVudDwvYT48L2xpPg0KCQkJCTxsaT48YSBocmVmPSJkb2N1bWVudGF0aW9uL2NyaXRlcmlvbi1kLXZpZGVvLm1wNCI+UHJvZHVjdCB2aWRlbzwvYT48L2xpPg0KCQkJCTxsaT48YSBocmVmPSJkb2N1bWVudGF0aW9uL2NyaXRlcmlvbi1lLWV2YWx1YXRpb24ucGRmIj5FdmFsdWF0aW9uPC9hPjwvbGk+DQoJCQkJPGxpPjxhIGhyZWY9ImRvY3VtZW50YXRpb24vYXBwZW5kaXgucGRmIj5BcHBlbmRpY2VzPC9hPjwvbGk+DQoJCQkJPGxpPjxhIGhyZWY9InByb2R1Y3QvcHJvZHVjdC56aXAiPkxpbmsgdG8gcHJvZHVjdCBaSVAgZmlsZTwvYT48L2xpPg0KCQkJPC91bD4NCgkJPC9kaXY+DQoJPC9ib2R5Pg0KPC9odG1sPg==</div>
+		</form>
+		
+		<div id="error-message">
+		</div>		
+	</body>
+</html>

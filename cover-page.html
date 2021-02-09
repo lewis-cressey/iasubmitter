@@ -1,0 +1,102 @@
+<!doctype html>
+
+<html>
+	<head>
+		<meta charset="utf8">
+		<title>Computer Science solution</title>
+		
+		<style>
+			body {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;				
+				min-height: 95vh;				
+			}
+			
+			h1 {
+				text-align: center;
+			}
+			
+			#content {
+				display: flex;
+				flex-direction: row;
+				flex-wrap: wrap;
+				justify-content: center;
+				align-items: center;				
+			}
+		
+			table {
+				border-collapse: collapse;
+				margin: 0 1em 0 0;
+			}
+		
+			th {
+				text-align: right; 
+				padding: 1em;
+			}
+			
+			td {
+				padding: 1em;
+			}
+
+			ul {
+				border-left: 2px solid black;
+			}
+			
+			li {
+				list-style-type: none;
+				padding: 0.5em;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Computer science solution</h1>
+
+		<div id="content">
+			<table>
+				<tbody>
+					<tr>
+						<th>Candidate name:</th>
+						<td>${candidate-name}</td>
+					</tr>
+					<tr>
+						<th>School number:</th>
+						<td>${school-number}</td>
+					</tr>
+
+					<tr>
+						<th>Candidate session number:</th>
+						<td>${session-number}</td>
+					</tr>
+					
+					<tr>
+						<th>Solution title:</th>
+						<td>${solution-title}</td>
+					</tr>
+					
+					<tr>
+						<th>User name:</th>
+						<td>${user-name}</td>
+					</tr>
+
+					<tr>
+						<th>Word count:</th>
+						<td>${word-count}</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<ul>
+				<li><a href="documentation/criterion-a-planning.pdf">Planning</a></li>
+				<li><a href="documentation/criterion-b-rot.pdf">Record of tasks</a></li>
+				<li><a href="documentation/criterion-b-design.pdf">Design</a></li>
+				<li><a href="documentation/criterion-c-development.pdf">Development</a></li>
+				<li><a href="documentation/criterion-d-video.mp4">Product video</a></li>
+				<li><a href="documentation/criterion-e-evaluation.pdf">Evaluation</a></li>
+				<li><a href="documentation/appendix.pdf">Appendices</a></li>
+				<li><a href="product/product.zip">Link to product ZIP file</a></li>
+			</ul>
+		</div>
+	</body>
+</html>
