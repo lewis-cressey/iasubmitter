@@ -1,3 +1,5 @@
+const page = {}
+
 async function readFile(file) {
 	const reader = new FileReader();
 	const promise = new Promise((resolve, reject) => {
@@ -30,16 +32,16 @@ class Submission {
 	async addDocumentation(dir, srcName, dstName, extension, sizeLimit) {
 		const file = document.getElementById(srcName).files[0];
 		if (!file) {
-			return this.showError("No file submitted for " + dstName);
+			return this.showError(`No file submitted for ${dstName}`);
 		}
 			
 		if (!file.name.toLowerCase().endsWith(extension)) {
-			return this.showError("File " + file.name + " should have file extension " + extension);
+			return this.showError(`File ${file.name} should have file extension ${extension}`);
 		}
 			
 		const fileSize = file.size / 1000000;
 		if (fileSize > sizeLimit) {
-			return this.showError("File " + file.name + " is greater than size limit of " + sizeLimit + " megabytes");
+			return this.showError(`File ${file.name} is greater than size limit of ${sizeLimit}MB`);
 		}
 
 		const data = await readFile(file);
@@ -47,14 +49,12 @@ class Submission {
 	}
 
 	async addCoverPage(dir) {
-		const fields = [ "candidate-name", "school-number", "session-number", "solution-title", "user-name", "word-count" ];
-		let coverPage = document.getElementById("template").innerText;
-		coverPage = atob(coverPage);
+		const fields = [ "candidate-id", "solution-title", "project-notes", "word-count" ];
+		const response = await window.fetch("template.html");
+		let coverPage = await response.text()
 		
 		for (let fieldName of fields) {
-			const value = document.getElementById(fieldName).value.trim();
-			
-			if (value.length === 0) this.showError("You need to enter a value for " + fieldName);
+			const value = document.getElementById(fieldName).value.trim();		
 			coverPage = coverPage.replace("${" + fieldName + "}", value)
 		}
 		
@@ -79,17 +79,24 @@ class Submission {
 		
 		if (!this.hasError) {
 			const result = await this.zip.generateAsync({ type: "blob" });
-			window.location = window.URL.createObjectURL(result);	
+			const candidateId = document.getElementById("candidate-id").value.trim()
+			page.result.download = `${candidateId}.zip`
+			page.result.href = window.URL.createObjectURL(result)
+			page.result.click()
 		}
 	}
 }
 
 async function submitSolution() {
-	document.getElementById("submit-button").disabled = true;
+	page.submitButton.classList.add("hidden")
+	page.pleaseWait.classList.remove("hidden")
 	await new Submission().build();
-	document.getElementById("submit-button").disabled = false;	
+	page.submitButton.classList.remove("hidden")
+	page.pleaseWait.classList.add("hidden")
 }
 
-window.onload = event => {
-
-};
+window.addEventListener("load", event => {
+	page.submitButton = document.getElementById("submit-button")
+	page.pleaseWait = document.getElementById("please-wait")
+	page.result = document.getElementById("result")
+})

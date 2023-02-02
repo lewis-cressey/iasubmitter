@@ -2,131 +2,94 @@
 
 <html>
 	<head>
-		<script src="jszip.min.js"></script>
-		<script src="submitter.js"></script>
-
+		<meta charset="utf8">
+		<title>Computer Science solution</title>
+		
 		<style>
+			body {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;				
+				min-height: 95vh;				
+			}
+			
 			h1 {
 				text-align: center;
-				font-size: 2em;
 			}
 			
-			fieldset {
-				border: 0;
-				width: 40em;
-				margin: 0 auto;
-			}
-			
-			input[type=number] {
-				width: 5em;
-			}
-			
-			input[type=submit] {
-				display: block;
-				margin: 0 auto;
-			}
-			
-			label {
-				display: inline-block;
-				min-width: 15em;
-				text-align: right;
-				font-weight: bold;
-			}
-			
-			#error-message {
-				text-align: center;
-				font-weight: bold;
-				color: red;
+			#content {
+				display: flex;
+				flex-direction: row;
+				flex-wrap: wrap;
+				justify-content: center;
+				align-items: center;				
 			}
 		
-			#template {
-				display: none;
+			table {
+				border-collapse: collapse;
+				margin: 0 1em 0 0;
+			}
+		
+			th {
+				text-align: right; 
+				padding: 1em;
+				max-width: 20em;
+			}
+			
+			td {
+				padding: 1em;
+				max-width: 20em;
+			}
+
+			ul {
+				border-left: 2px solid black;
+			}
+			
+			li {
+				list-style-type: none;
+				padding: 0.5em;
 			}
 		</style>
 	</head>
 	<body>
-		<h1>
-			Computer Science IA Submission Form
-		</h1>
-		<form action="javascript:submitSolution()">
-			<fieldset>
-				<label for="name">Candidate name:</label>
-				<input type="text" id="candidate-name" />
-			</fieldset>
-			
-			<fieldset>
-				<label for="name">School number:</label>
-				<input type="text" id="school-number" />
-			</fieldset>
-			
-			<fieldset>
-				<label for="name">Candidate session number:</label>
-				<input type="text" id="session-number" />
-			</fieldset>
-			
-			<fieldset>
-				<label for="name">Solution title:</label>
-				<input type="text" id="solution-title" />
-			</fieldset>
-			
-			<fieldset>
-				<label for="name">User name:</label>
-				<input type="text" id="user-name" />
-			</fieldset>
-			
-			<fieldset>
-				<label for="name">Word count:</label>
-				<input type="number" id="word-count" />
-			</fieldset>
-			
-			<fieldset>
-				<label for="name">Planning (A):</label>
-				<input type="file" id="file1" />
-			</fieldset>
-			
-			<fieldset>
-				<label for="name">Record of tasks (B):</label>
-				<input type="file" id="file2" />
-			</fieldset>
-			
-			<fieldset>
-				<label for="name">Design document (B):</label>
-				<input type="file" id="file3" />
-			</fieldset>
-			
-			<fieldset>
-				<label for="name">Development (C):</label>
-				<input type="file" id="file4" />
-			</fieldset>
-			
-			<fieldset>
-				<label for="name">Video of functionality (D):</label>
-				<input type="file" id="file5" />
-			</fieldset>
-			
-			<fieldset>
-				<label for="name">Evaluation (E):</label>
-				<input type="file" id="file6" />
-			</fieldset>
-			
-			<fieldset>
-				<label for="name">Appendix:</label>
-				<input type="file" id="file7" />
-			</fieldset>
+		<h1>Computer science solution</h1>
 
-			<fieldset>
-				<label for="name">Product ZIP file:</label>
-				<input type="file" id="file8" />
-			</fieldset>
+		<div id="content">
+			<table>
+				<tbody>
+					<tr>
+						<th>Candidate session number:</th>
+						<td>${candidate-id}</td>
+					</tr>
 
-			<fieldset>
-				<input type="submit" id="submit-button" value="Submit" />
-			</fieldset>
-			
-			<div id="template">${TEMPLATE}</div>
-		</form>
-		
-		<div id="error-message">
-		</div>		
+					<tr>
+						<th>Solution title:</th>
+						<td>${solution-title}</td>
+					</tr>
+					
+					<tr>
+						<th>Word count:</th>
+						<td>${word-count}</td>
+					</tr>
+					
+					<tr>
+						<th>Notes:</th>
+						<td>${project-notes}</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<ul>
+				<li><a href="documentation/criterion-a-planning.pdf">Planning</a></li>
+				<li><a href="documentation/criterion-b-rot.pdf">Record of tasks</a></li>
+				<li><a href="documentation/criterion-b-design.pdf">Design</a></li>
+				<li><a href="documentation/criterion-c-development.pdf">Development</a></li>
+				<li><a href="documentation/criterion-d-video.mp4">Product video</a></li>
+				<li><a href="documentation/criterion-e-evaluation.pdf">Evaluation</a></li>
+				<li><a href="documentation/appendix.pdf">Appendices</a></li>
+				<li><a href="product/product.zip">Link to product ZIP file</a></li>
+			</ul>
+		</div>
 	</body>
 </html>
